@@ -1,0 +1,24 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model FortuneResult {
+  id              String   @id @default(cuid())
+  userName        String
+  birthdate       String
+  lifePathNumber  Int
+  aspirationQ1    String
+  aspirationQ2    String
+  aspirationQ3    String
+  createdAt       DateTime @default(now())
+
+  @@map("fortune_results")
+}
